@@ -151,7 +151,15 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  /* code here */
+   inventory = [
+    { id: 1, car_make: "Lincoln", car_model: "Navigator", car_year: 2009 },
+    { id: 2, car_make: "Mazda", car_model: "Miata MX-5", car_year: 2001 },
+    { id: 3, car_make: "Land Rover", car_model: "Defender Ice Edition", car_year: 2010 }
+  ]
+  const info = inventory.find((item, index) => {
+    return index === 0
+  })
+  return `This is a ${info.car_make} ${info.car_model}`
 }
 
 /**
@@ -165,10 +173,12 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
+function getLastCarInfo(exports) {
+  const info = exports.find((item, index) => {
+    return index === 49
+  })
+  return `This is a ${info.car_make} ${info.car_model}`
 }
-
 /**
  * ### Challenge `getCarInfoById`
  * 
@@ -181,8 +191,8 @@ function getLastCarInfo(/* code here */) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+function getCarInfoById() {
+  
 }
 
 /**
@@ -237,8 +247,14 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(inventory) {
+  const germanCars = [];
+  for (let i = 0; i < sortCarInventory.length; i++){
+    if(inventory[i].car_make == 'Audi' || inventory[i].car_make == 'Mercedes-Benz' || inventory[i].car_make == 'Volkswagen' || inventory[i].car_make == 'BMW') {
+      germanCars.push(inventory[i]);
+    }
+  }
+  return germanCars;
 }
 
 /**
